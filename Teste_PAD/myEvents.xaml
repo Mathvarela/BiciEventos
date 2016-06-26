@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="Teste_PAD.myEvents"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Teste_PAD"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView Name="sv_Menu" DisplayMode="CompactOverlay" CompactPaneLength="50" OpenPaneLength="200">
+            <SplitView.Pane>
+                <StackPanel Background="Gray">
+                    <Button Name="b_Hamburger" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="48" Height="48" Background="Transparent" Click="b_Hamburger_Click"/>
+                    <ListView>
+                        <ListViewItem Name="lvi_Main" Content="Main" Padding="50 0 0 0" Tapped="lvi_Main_Tapped"></ListViewItem>
+                        <ListViewItem Name="lvi_myEvents" Content="My Events" Padding="50 0 0 0"></ListViewItem>
+                        <ListViewItem Name="lvi_invites" Content="Invites" Padding="50 0 0 0" Tapped="lvi_invite_Tapped"></ListViewItem>
+                        <ListViewItem Name="lvi_Create" Content="Create Event" Padding="50 0 0 0" Tapped="lvi_Create_Tapped"></ListViewItem>
+                        <ListViewItem Name="lvi_Logout" Content="Logout" Padding="50 0 0 0" Tapped="lvi_Logout_Tapped"></ListViewItem>
+                    </ListView>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <StackPanel Loaded="StackPanel_Loaded">
+                    <TextBlock Name="tblock_Title" HorizontalAlignment="Center" FontSize="30" Margin="0 30 0 0" Text="My Events"/>
+                    <TextBox x:Name="tb_Search" HorizontalAlignment="Stretch" TextWrapping="Wrap" PlaceholderText="Type here" Margin="0 10 0 0"/>
+                    <Button x:Name="b_Search" Content="Search"  HorizontalAlignment="Stretch" Click="b_Search_Click" Margin="0 50 0 0"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible">
+                        <ListBox x:Name="lb_Events" HorizontalAlignment="Stretch" Margin="0 50 0 0" SelectionChanged="lb_Events_SelectionChanged"/>
+                    </ScrollViewer>
+                </StackPanel>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>
