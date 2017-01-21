@@ -9,8 +9,14 @@
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>a2661166-7b9a-46f1-98f6-2d38f5e9dde6</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>88B4BEBA26C896D10AF12915127DCD73578C301CB70970006DE09C10C092DB4C</RegisteredManifestChecksum>
+    <PackageIdentityPublisher>CN=luisdeolpy</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\obj\x86\Debug\</IntermediateOutputPath>
+    <RemoteDeploymentType>
+    </RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <RegisteredManifestChecksum>C94D965DCD3BEE2CD84CCA39D01438C3294FAAB337B9EACA4F8AA79F3B66ADD9</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>a2661166-7b9a-46f1-98f6-2d38f5e9dde6_1.0.0.0_x86__q23e8xeht80f2</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>a2661166-7b9a-46f1-98f6-2d38f5e9dde6_q23e8xeht80f2!App</RegisteredUserModeAppID>
     <RegisteredPackageID>a2661166-7b9a-46f1-98f6-2d38f5e9dde6</RegisteredPackageID>
@@ -19,16 +25,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-06-26T08:36:11.544</Modified>
+      <Modified>2017-01-21T17:00:40.387</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\bin\x86\Debug\Teste_PAD.exe">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Teste_PAD.exe">
       <PackagePath>entrypoint\Teste_PAD.exe</PackagePath>
-      <Modified>2016-06-26T08:36:11.246</Modified>
+      <Modified>2017-01-21T17:00:38.902</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luisdeolpy\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -446,63 +452,63 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2016-01-23T00:00:27.518</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\back.png">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\back.png">
       <PackagePath>back.png</PackagePath>
       <Modified>2016-04-30T16:41:47.749</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2015-10-10T20:09:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-10-10T20:09:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-10-10T20:09:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-10-10T20:09:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-10-10T20:09:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-10-10T20:09:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-10-10T20:09:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2016-04-26T21:03:38.713</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\bin\x86\Debug\Teste_PAD.xr.xml">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Teste_PAD.xr.xml">
       <PackagePath>Teste_PAD.xr.xml</PackagePath>
-      <Modified>2016-06-26T08:17:27.239</Modified>
+      <Modified>2017-01-21T17:00:38.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
-      <Modified>2016-05-22T22:28:17.577</Modified>
+      <Modified>2017-01-10T16:54:12.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-06-26T08:24:50.467</Modified>
+      <Modified>2017-01-21T17:00:39.890</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\bin\x86\Debug\Core\Teste_PAD.exe">
+    <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Core\Teste_PAD.exe">
       <PackagePath>Teste_PAD.exe</PackagePath>
-      <Modified>2016-06-26T08:36:11.541</Modified>
+      <Modified>2017-01-21T17:00:40.383</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
@@ -535,27 +541,27 @@
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.23918.0</Version>
+      <Version>14.0.24210.0</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.23918.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.23918.0</Version>
+      <Version>14.0.24210.0</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.23918.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.23918.0</Version>
+      <Version>14.0.24210.0</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.23918.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.24210.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>

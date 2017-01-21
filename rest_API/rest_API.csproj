@@ -224,17 +224,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606041153336_routeFix.cs" />
-    <Compile Include="Migrations\201606041153336_routeFix.Designer.cs">
-      <DependentUpon>201606041153336_routeFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606250949101_Friend_and_Invite.cs" />
-    <Compile Include="Migrations\201606250949101_Friend_and_Invite.Designer.cs">
-      <DependentUpon>201606250949101_Friend_and_Invite.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606251002137_userName.cs" />
-    <Compile Include="Migrations\201606251002137_userName.Designer.cs">
-      <DependentUpon>201606251002137_userName.cs</DependentUpon>
+    <Compile Include="Migrations\201701211641567_OhGodSaveMe.cs" />
+    <Compile Include="Migrations\201701211641567_OhGodSaveMe.Designer.cs">
+      <DependentUpon>201701211641567_OhGodSaveMe.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -320,14 +312,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606041153336_routeFix.resx">
-      <DependentUpon>201606041153336_routeFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606250949101_Friend_and_Invite.resx">
-      <DependentUpon>201606250949101_Friend_and_Invite.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606251002137_userName.resx">
-      <DependentUpon>201606251002137_userName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701211641567_OhGodSaveMe.resx">
+      <DependentUpon>201701211641567_OhGodSaveMe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

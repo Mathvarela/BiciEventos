@@ -4,21 +4,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization.Json;
 using Windows.Devices.Geolocation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Services.Maps;
 using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -40,6 +34,23 @@ namespace Teste_PAD
                 b_Edit.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 b_Delete.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var evento = (Event)e.Parameter;
+            if (evento != null)
+            {
+                tblock_Title_value.Text = evento.Title;
+                tblock_Start_Date_value.Text = evento.Start_Date.ToString("g");
+                tblock_Start_Time_value.Text = evento.Start_Time;
+                tblock_End_Date_value.Text = evento.End_Date.ToString("g");
+                tblock_End_Time_value.Text = evento.End_Time;
+                tblock_Description_value.Text = evento.Description;
+            }
+            base.OnNavigatedTo(e);
+
+
         }
 
         private async void lvi_Logout_Tapped(object sender, TappedRoutedEventArgs e)
@@ -79,12 +90,6 @@ namespace Teste_PAD
             List<Event_Going> events = JsonConvert.DeserializeObject<List<Event_Going>>(response);
             var usersParticipations = events.FindAll(x => x.EventId.Equals(eventId));
             tblock_Users_Participating.Text = usersParticipations.Count.ToString() + " Confirmados";
-            tblock_Title_value.Text = localSettings.Values["Event_Title"].ToString();
-            tblock_Start_Date_value.Text = localSettings.Values["Event_Start_Date"].ToString();
-            tblock_Start_Time_value.Text = localSettings.Values["Event_Start_Time"].ToString();
-            tblock_End_Date_value.Text = localSettings.Values["Event_End_Date"].ToString();
-            tblock_End_Time_value.Text = localSettings.Values["Event_End_Time"].ToString();
-            tblock_Description_value.Text = localSettings.Values["Event_Description"].ToString();
         }
 
         private void lvi_Create_Tapped(object sender, TappedRoutedEventArgs e)

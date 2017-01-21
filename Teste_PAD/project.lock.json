@@ -4,10 +4,7 @@
   "targets": {
     "UAP,Version=v10.0": {
       "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ]
+        "type": "package"
       },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
@@ -1903,10 +1900,7 @@
     },
     "UAP,Version=v10.0/win10-arm": {
       "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ]
+        "type": "package"
       },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
@@ -3659,10 +3653,7 @@
     },
     "UAP,Version=v10.0/win10-arm-aot": {
       "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ]
+        "type": "package"
       },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
@@ -5378,10 +5369,7 @@
     },
     "UAP,Version=v10.0/win10-x64": {
       "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ]
+        "type": "package"
       },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
@@ -7141,10 +7129,7 @@
     },
     "UAP,Version=v10.0/win10-x64-aot": {
       "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ]
+        "type": "package"
       },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
@@ -8860,10 +8845,7 @@
     },
     "UAP,Version=v10.0/win10-x86": {
       "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ]
+        "type": "package"
       },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
@@ -10623,10 +10605,7 @@
     },
     "UAP,Version=v10.0/win10-x86-aot": {
       "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ]
+        "type": "package"
       },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
@@ -15749,5 +15728,7 @@
       "Newtonsoft.Json >= 8.0.3"
     ],
     "UAP,Version=v10.0": []
-  }
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
 }

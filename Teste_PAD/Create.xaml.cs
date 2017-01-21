@@ -1,27 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using System.Data.Common;
 using System.Net.Http;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using System.Runtime.Serialization.Json;
-using Windows.UI.Popups;
 using Windows.Devices.Geolocation;
-using Windows.UI.Xaml.Controls.Maps;
 using Windows.Services.Maps;
 using Windows.UI;
+using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
+using Windows.UI.Xaml.Input;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Teste_PAD
@@ -174,22 +165,9 @@ namespace Teste_PAD
             List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
             var evento = listEvents.FirstOrDefault(x => x.Title == objEvento.Title);
             tblock_Title.Text = objEvento.Title;
-            localSettings.Values["Event_Id"] = evento.Id;
-            localSettings.Values["Event_Title"] = objEvento.Title;
-            localSettings.Values["Event_Description"] = objEvento.Description;
-            localSettings.Values["Event_Start_Date"] = objEvento.Start_Date.Date.ToString().Substring(0,10);
-            localSettings.Values["Event_Start_Time"] = objEvento.Start_Time;
-            localSettings.Values["Event_End_Date"] = objEvento.End_Date.ToString().Substring(0, 10);
-            localSettings.Values["Event_End_Time"] = objEvento.End_Time;
-            localSettings.Values["Event_startLatitude"] = objEvento.start_Latitude.ToString();
-            localSettings.Values["Event_startLongitude"] = objEvento.start_Longitude.ToString();
-            localSettings.Values["Event_endLatitude"] = objEvento.end_Latitude.ToString();
-            localSettings.Values["Event_endLongitude"] = objEvento.end_Longitude.ToString();
-            localSettings.Values["Event_Username"] = objEvento.Username;
-            localSettings.Values["Allowed_to_Edit"] = true;
             if (this.Frame != null)
             {
-                this.Frame.Navigate(typeof(Details));
+                this.Frame.Navigate(typeof(Details), objEvento);
             }
         }
 

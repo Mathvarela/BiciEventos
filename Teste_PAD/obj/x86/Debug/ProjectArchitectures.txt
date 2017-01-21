@@ -1,1 +1,1 @@
-C:\Users\luisdeolpy\Documents\Visual Studio 2015\Projects\Teste_PAD - copia - copia\Teste_PAD\Teste_PAD.csproj;x86
+C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\Teste_PAD.csproj;x86

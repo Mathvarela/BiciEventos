@@ -1,20 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -63,28 +55,13 @@ namespace Teste_PAD
             var response = await client.GetStringAsync(uri);
             List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            var eventos = listEvents.FirstOrDefault(x => x.Title == ((ListBoxItem)lb_Events.SelectedValue).Content.ToString());
-            tblock_Title.Text = eventos.Title;
-            localSettings.Values["Event_id"] = eventos.Id;
-            localSettings.Values["Event_Title"] = eventos.Title;
-            localSettings.Values["Event_Description"] = eventos.Description;
-            localSettings.Values["Event_Start_Date"] = eventos.Start_Date.Date.ToString().Substring(0, 10);
-            localSettings.Values["Event_Start_Time"] = eventos.Start_Time;
-            localSettings.Values["Event_End_Date"] = eventos.End_Date.ToString().Substring(0, 10);
-            localSettings.Values["Event_End_Time"] = eventos.End_Time;
-            localSettings.Values["Event_startLatitude"] = eventos.start_Latitude.ToString();
-            localSettings.Values["Event_startLongitude"] = eventos.start_Longitude.ToString();
-            localSettings.Values["Event_endLatitude"] = eventos.end_Latitude.ToString();
-            localSettings.Values["Event_endLongitude"] = eventos.end_Longitude.ToString();
-            localSettings.Values["Event_Username"] = eventos.Username;
-            if (eventos.Username == localSettings.Values["sessionUser"].ToString())
+            var evento = listEvents.FirstOrDefault(x => x.Title == ((ListBoxItem)lb_Events.SelectedValue).Content.ToString());
+            tblock_Title.Text = evento.Title;
+            if (evento.Username == localSettings.Values["sessionUser"].ToString())
             {
                 localSettings.Values["Allowed_to_Edit"] = true;
             }
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(Details));
-            }
+            Frame?.Navigate(typeof(Details), evento);
         }
         private void b_Hamburger_Click(object sender, RoutedEventArgs e)
         {
