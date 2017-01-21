@@ -22,7 +22,7 @@
                     <Button Name="b_Delete" FontFamily="Segoe MDL2 Assets" Content="&#xE74D;" Width="48" Height="48" Background="Gray" Visibility="Collapsed" Click="b_Delete_Click"/>
                     <TextBlock Name="tblock_Welcome" FontSize="20" Padding="50 0 0 0"></TextBlock>
                     <ListView>
-                        <ListViewItem Name="lvi_Main" Content="Main" Padding="50 0 0 0"></ListViewItem>
+                        <ListViewItem Name="LviMain" Content="Main" Padding="50 0 0 0" Tapped="Lvi_Main_OnTapped"></ListViewItem>
                         <ListViewItem Name="lvi_myEvents" Content="My Events" Padding="50 0 0 0" Tapped="lvi_myEvents_Tapped"></ListViewItem>
                         <ListViewItem Name="lvi_invites" Content="Invites" Padding="50 0 0 0" Tapped="lvi_invite_Tapped"></ListViewItem>
                         <ListViewItem Name="lvi_Create" Content="Create Event" Padding="50 0 0 0" Tapped="lvi_Create_Tapped"></ListViewItem>
@@ -34,7 +34,7 @@
                 <StackPanel Margin="48 0 0 0" Padding="10" Loaded="StackPanel_Loaded" Grid.Column="0">
                     <Button x:Name="b_going" FontFamily="Segoe MDL2 Assets" Content="&#xE001;" Width="48" Height="48" Background="Gray" Click="b_going_Click" HorizontalAlignment="Right" Margin="0,0,3,0"/>
                     <TextBlock x:Name="tblock_Users_Participating"  Grid.Column ="1" HorizontalAlignment="Right" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <Button x:Name="b_invite" FontFamily="Segoe MDL2 Assets" Content="&#xE8FA;" Width="48" Height="48" Background="Gray" HorizontalAlignment="Right" Margin="0,10,3,0" RenderTransformOrigin="3.267,0.667"/>
+                    <Button x:Name="b_invite" FontFamily="Segoe MDL2 Assets" Content="&#xE8FA;" Width="48" Height="48" Background="Gray" Click="B_invite_OnClick"  HorizontalAlignment="Right" Margin="0,10,3,0" RenderTransformOrigin="3.267,0.667"/>
                     <TextBlock x:Name="tblock_Title" TextWrapping="Wrap" HorizontalAlignment="Left" Grid.Column="0" Margin="0,-100,88,0" />
                     <TextBlock x:Name="tblock_Title_value" TextWrapping="Wrap" HorizontalAlignment="Left"  FontSize="30"/>
                     <TextBlock x:Name="tblock_Start_Date" TextWrapping="Wrap" Text="Start Date" HorizontalAlignment="Left" Margin="0,0,0,0" Height="20"/>

@@ -13,7 +13,7 @@
                 <StackPanel Background="Gray">
                     <Button Name="b_Hamburger" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="48" Height="48" Background="Transparent" Click="b_Hamburger_Click" HorizontalAlignment="Right" Margin="0,0,152,0"/>
                     <ListView>
-                        <ListViewItem Content="Main" Padding="50 0 0 0"></ListViewItem>
+                        <ListViewItem Name="LviMain" Content="Main" Padding="50 0 0 0" Tapped="Lvi_Main_OnTapped"></ListViewItem>
                         <ListViewItem Name="lvi_myEvents" Content="My Events" Padding="50 0 0 0" Tapped="lvi_myEvents_Tapped"></ListViewItem>
                         <ListViewItem Name="lvi_invites" Content="Invites" Padding="50 0 0 0" Tapped="lvi_invite_Tapped"></ListViewItem>
                         <ListViewItem Name="lvi_Create" Content="Create Event" Padding="50 0 0 0" Tapped="lvi_Create_Tapped"></ListViewItem>

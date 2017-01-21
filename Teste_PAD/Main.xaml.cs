@@ -55,10 +55,7 @@ namespace Teste_PAD
             localSettings.Values["sessionUser"] = null;
             MessageDialog logoutMessage = new MessageDialog("Logout success");
             await logoutMessage.ShowAsync();
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(MainPage));
-            }
+            Frame?.Navigate(typeof(MainPage));
         }
 
         private async void lb_Events_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -77,6 +74,11 @@ namespace Teste_PAD
             tblock_Title.Text = evento.Title;
             var usersParticipations = events.FindAll(x => x.EventId.Equals(evento.Id));
             localSettings.Values["Users_Participating"] = usersParticipations.Count.ToString();
+            localSettings.Values["start_latitude"] = evento.start_Latitude;
+            localSettings.Values["start_longitude"] = evento.start_Longitude;
+            localSettings.Values["end_latitude"] = evento.end_Latitude;
+            localSettings.Values["end_longitude"] = evento.end_Longitude;
+            localSettings.Values["EventId"] = evento.Id;
             if (evento.Username == localSettings.Values["sessionUser"].ToString())
             {
                 localSettings.Values["Allowed_to_Edit"] = true;
@@ -86,10 +88,7 @@ namespace Teste_PAD
 
         private void lvi_Create_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(Index));
-            }
+            Frame?.Navigate(typeof(Index));
         }
 
         private async void b_Search_Click(object sender, RoutedEventArgs e)
@@ -111,26 +110,17 @@ namespace Teste_PAD
         }
         private void lvi_myEvents_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(myEvents));
-            }
+            Frame?.Navigate(typeof(myEvents));
         }
 
         private void lvi_invite_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(Invites));
-            }
+            Frame?.Navigate(typeof(Invites));
         }
 
         private void lvi_Change_Password_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(ChangePassword));
-            }
+            Frame?.Navigate(typeof(ChangePassword));
         }
     }
 }

@@ -22,7 +22,7 @@
                     <Button x:ConnectionId='5' Name="b_Delete" FontFamily="Segoe MDL2 Assets" Content="&#xE74D;" Width="48" Height="48" Background="Gray" Visibility="Collapsed"                       />
                     <TextBlock x:ConnectionId='6' Name="tblock_Welcome" FontSize="20" Padding="50 0 0 0"></TextBlock>
                     <ListView>
-                        <ListViewItem x:ConnectionId='7' Name="lvi_Main" Content="Main" Padding="50 0 0 0"></ListViewItem>
+                        <ListViewItem x:ConnectionId='7' Name="LviMain" Content="Main" Padding="50 0 0 0"                           ></ListViewItem>
                         <ListViewItem x:ConnectionId='8' Name="lvi_myEvents" Content="My Events" Padding="50 0 0 0"                             ></ListViewItem>
                         <ListViewItem x:ConnectionId='9' Name="lvi_invites" Content="Invites" Padding="50 0 0 0"                           ></ListViewItem>
                         <ListViewItem x:ConnectionId='10' Name="lvi_Create" Content="Create Event" Padding="50 0 0 0"                           ></ListViewItem>
@@ -34,7 +34,7 @@
                 <StackPanel x:ConnectionId='12' Margin="48 0 0 0" Padding="10"                            Grid.Column="0">
                     <Button x:ConnectionId='13' x:Name="b_going" FontFamily="Segoe MDL2 Assets" Content="&#xE001;" Width="48" Height="48" Background="Gray"                       HorizontalAlignment="Right" Margin="0,0,3,0"/>
                     <TextBlock x:ConnectionId='14' x:Name="tblock_Users_Participating"  Grid.Column ="1" HorizontalAlignment="Right" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                    <Button x:ConnectionId='15' x:Name="b_invite" FontFamily="Segoe MDL2 Assets" Content="&#xE8FA;" Width="48" Height="48" Background="Gray" HorizontalAlignment="Right" Margin="0,10,3,0" RenderTransformOrigin="3.267,0.667"/>
+                    <Button x:ConnectionId='15' x:Name="b_invite" FontFamily="Segoe MDL2 Assets" Content="&#xE8FA;" Width="48" Height="48" Background="Gray"                           HorizontalAlignment="Right" Margin="0,10,3,0" RenderTransformOrigin="3.267,0.667"/>
                     <TextBlock x:ConnectionId='16' x:Name="tblock_Title" TextWrapping="Wrap" HorizontalAlignment="Left" Grid.Column="0" Margin="0,-100,88,0" />
                     <TextBlock x:ConnectionId='17' x:Name="tblock_Title_value" TextWrapping="Wrap" HorizontalAlignment="Left"  FontSize="30"/>
                     <TextBlock x:ConnectionId='18' x:Name="tblock_Start_Date" TextWrapping="Wrap" Text="Start Date" HorizontalAlignment="Left" Margin="0,0,0,0" Height="20"/>

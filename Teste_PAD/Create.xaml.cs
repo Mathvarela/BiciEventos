@@ -22,9 +22,9 @@ namespace Teste_PAD
     /// </summary>
     public sealed partial class Index : Page
     {
-        Geopoint startLocation = null;
-        Geopoint endLocation = null;
-        int first = 0;
+        Geopoint _startLocation = null;
+        Geopoint _endLocation = null;
+        int _first = 0;
         public Index()
         {
             this.InitializeComponent();
@@ -52,10 +52,7 @@ namespace Teste_PAD
             var result = await dialog.ShowAsync();
             if (result == yesComand)
             {
-                if (this.Frame != null)
-                {
-                    this.Frame.Navigate(typeof(MainPage));
-                }
+                Frame?.Navigate(typeof(MainPage));
             }
             else
             {
@@ -70,7 +67,7 @@ namespace Teste_PAD
             var tappedGeoPosition = args.Location.Position;
             tblock_latitude.Text = tappedGeoPosition.Latitude.ToString();
             tblock_longitude.Text = tappedGeoPosition.Longitude.ToString();
-            if ((icons > 1) && (first != 0))
+            if ((icons > 1) && (_first != 0))
             {
                 tb_Description.Text = icons.ToString();
                 MapControl.MapElements.Clear();
@@ -84,15 +81,15 @@ namespace Teste_PAD
                 icon.ZIndex = 0;
                 MapControl.MapElements.Add(icon);
                 icons++;
-                first++;
+                _first++;
                 if (icons == 1)
-                    startLocation = icon.Location;
+                    _startLocation = icon.Location;
                 else
                 {
-                    endLocation = icon.Location;
+                    _endLocation = icon.Location;
                         MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(
-                        startLocation,
-                        endLocation,
+                        _startLocation,
+                        _endLocation,
                          MapRouteOptimization.Time,
                         MapRouteRestrictions.None
                         );
@@ -144,10 +141,10 @@ namespace Teste_PAD
                 Description = tb_Description.Text,
                 Start_Date = cdp_StartDate.Date.Value.DateTime,
                 End_Date = cdp_EndDate.Date.Value.DateTime,
-                start_Latitude = startLocation.Position.Latitude,
-                end_Latitude = endLocation.Position.Latitude,
-                start_Longitude = startLocation.Position.Longitude,
-                end_Longitude = endLocation.Position.Longitude,
+                start_Latitude = _startLocation.Position.Latitude,
+                end_Latitude = _endLocation.Position.Latitude,
+                start_Longitude = _startLocation.Position.Longitude,
+                end_Longitude = _endLocation.Position.Longitude,
                 Start_Time = tp_Start_Time.Time.ToString(),
                 End_Time = tp_End_Time.Time.ToString(),
                 Username = value.ToString()
@@ -165,10 +162,7 @@ namespace Teste_PAD
             List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
             var evento = listEvents.FirstOrDefault(x => x.Title == objEvento.Title);
             tblock_Title.Text = objEvento.Title;
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(Details), objEvento);
-            }
+            Frame?.Navigate(typeof(Details), objEvento);
         }
 
         private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
@@ -179,10 +173,7 @@ namespace Teste_PAD
             var res = await dialog.ShowAsync();
             if ((int)res.Id == 0)
             {
-                if (this.Frame != null)
-                {
-                    this.Frame.Navigate(typeof(Main));
-                }
+                Frame?.Navigate(typeof(Main));
             }
         }
 
@@ -197,10 +188,7 @@ namespace Teste_PAD
             localSettings.Values["sessionUser"] = null;
             MessageDialog logoutMessage = new MessageDialog("Logout success");
             await logoutMessage.ShowAsync();
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(MainPage));
-            }
+            Frame?.Navigate(typeof(MainPage));
         }
 
         private async void lvi_Main_Tapped(object sender, TappedRoutedEventArgs e)
@@ -217,10 +205,7 @@ namespace Teste_PAD
             var result = await dialog.ShowAsync();
             if (result == yesComand)
             {
-                if (this.Frame != null)
-                {
-                    this.Frame.Navigate(typeof(Main));
-                }
+                Frame?.Navigate(typeof(Main));
             }
             else {
                 sv_Menu.IsPaneOpen = !sv_Menu.IsPaneOpen;
@@ -240,10 +225,7 @@ namespace Teste_PAD
             var result = await dialog.ShowAsync();
             if (result == yesComand)
             {
-                if (this.Frame != null)
-                {
-                    this.Frame.Navigate(typeof(myEvents));
-                }
+                Frame?.Navigate(typeof(myEvents));
             }
             else
             {
@@ -265,10 +247,7 @@ namespace Teste_PAD
             var result = await dialog.ShowAsync();
             if (result == yesComand)
             {
-                if (this.Frame != null)
-                {
-                    this.Frame.Navigate(typeof(Invites));
-                }
+                Frame?.Navigate(typeof(Invites));
             }
             else
             {

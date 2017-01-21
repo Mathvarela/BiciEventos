@@ -24,6 +24,8 @@ namespace Teste_PAD
     /// </summary>
     public sealed partial class Details : Page
     {
+        private int _eventId;
+
         public Details()
         {
             this.InitializeComponent();
@@ -38,6 +40,7 @@ namespace Teste_PAD
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             var evento = (Event)e.Parameter;
             if (evento != null)
             {
@@ -48,6 +51,7 @@ namespace Teste_PAD
                 tblock_End_Time_value.Text = evento.End_Time;
                 tblock_Description_value.Text = evento.Description;
             }
+            _eventId = (int) localSettings.Values["EventId"];
             base.OnNavigatedTo(e);
 
 
@@ -59,18 +63,12 @@ namespace Teste_PAD
             localSettings.Values["sessionUser"] = null;
             MessageDialog logoutMessage = new MessageDialog("Logout success");
             await logoutMessage.ShowAsync();
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(MainPage));
-            }
+            Frame?.Navigate(typeof(MainPage));
         }
 
         private void lvi_Main_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(Main));
-            }
+            Frame?.Navigate(typeof(Main));
         }
 
         private void b_Hamburger_Click(object sender, RoutedEventArgs e)
@@ -94,35 +92,14 @@ namespace Teste_PAD
 
         private void lvi_Create_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(Index));
-            }
+            Frame?.Navigate(typeof(Index));
         }
 
         private void b_back_Click(object sender, RoutedEventArgs e)
         {
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(Main));
-            }
+            Frame?.Navigate(typeof(Main));
         }
 
-        private async void ShowMyLocation()
-        {
-            Geolocator myGeolocator = new Geolocator();
-            Geoposition myGeoposition = await myGeolocator.GetGeopositionAsync();
-            double latitude = myGeoposition.Coordinate.Point.Position.Latitude;
-            double longitude = myGeoposition.Coordinate.Point.Position.Longitude;
-            MapControl.Center =
-                new Geopoint(new BasicGeoposition()
-                {
-                    Latitude = latitude,
-                    Longitude = longitude
-                });
-            MapControl.LandmarksVisible = true;
-            MapControl.ZoomLevel = 12;
-        }
         private async void MapControl_Loaded(object sender, RoutedEventArgs e)
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
@@ -169,31 +146,33 @@ namespace Teste_PAD
         }
         private void lvi_myEvents_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(myEvents));
-            }
+            Frame?.Navigate(typeof(myEvents));
         }
 
-        private void b_Edit_Click(object sender, RoutedEventArgs e)
+        private async void b_Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (this.Frame != null)
-            {
-                this.Frame.Navigate(typeof(Edit));
-            }
+            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            var eventId = Convert.ToInt32(localSettings.Values["EventId"]);
+            HttpClient client = new HttpClient();
+            string getUri = "http://localhost:50859/api/Events";
+            Uri uri = new Uri(getUri);
+            var response = await client.GetStringAsync(uri);
+            List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
+            var evento = listEvents.SingleOrDefault(a => a.Id == eventId);
+
+            Frame?.Navigate(typeof(Edit), evento);
         }
 
         private async void b_going_Click(object sender, RoutedEventArgs e)
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             string username = localSettings.Values["sessionUser"].ToString();
-            int eventId = Convert.ToInt32(localSettings.Values["Event_Id"]);
             var client = new HttpClient();
             string getUri = "http://localhost:50859/api/Event_Going";
             var uri = new Uri(getUri);
             var response = await client.GetStringAsync(uri);
             List<Event_Going> events = JsonConvert.DeserializeObject <List<Event_Going>>(response);
-            var regParticipations = events.FindAll(x => x.Username == username && x.EventId.Equals (eventId));
+            var regParticipations = events.FindAll(x => x.Username == username && x.EventId.Equals (_eventId));
             if (regParticipations.Count == 0){
                 var participation = new Event_Going()
                 {
@@ -208,7 +187,7 @@ namespace Teste_PAD
                 StringContent theContent = new StringContent(sr.ReadToEnd(), System.Text.Encoding.UTF8, "application/json");
                 try
                 {
-                    var post_response = await client.PostAsync(getUri.ToString(), theContent);
+                    await client.PostAsync(getUri, theContent);
                     var createdDialog = new MessageDialog("You're confirmated for this event!");
                     await createdDialog.ShowAsync();
                     tblock_Users_Participating.Text = (Convert.ToInt32(tblock_Users_Participating.Text.Substring(0,1))+1).ToString() + " Confirmados";
@@ -261,10 +240,64 @@ namespace Teste_PAD
 
         private void lvi_invite_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (this.Frame != null)
+            Frame?.Navigate(typeof(Invites));
+        }
+
+        private async void B_invite_OnClick(object sender, RoutedEventArgs e)
+        {
+            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            string userName = "";
+            var sessionName = localSettings.Values["sessionUser"].ToString();
+            HttpClient client = new HttpClient();
+            var url = "http://localhost:50859/api/Invites";
+            Uri uri = new Uri(url);
+            var txtBox = new TextBox {Width = 120};
+            var ctnDialog = new ContentDialog()
             {
-                this.Frame.Navigate(typeof(Invites));
+                Title = "Invite a friend",
+                PrimaryButtonText = "Cancel",
+                SecondaryButtonText = "Invite",
+                Content = txtBox
+            };
+            var displayDialog = await ctnDialog.ShowAsync();
+            switch (displayDialog)
+            {
+                case ContentDialogResult.Primary:
+                    break;
+                case ContentDialogResult.Secondary:
+                    var ctnDialogContent = (TextBox) ctnDialog.Content;
+                    if (ctnDialogContent.Text != null)
+                    {
+                        userName = ctnDialogContent.Text;
+                        var invite = new Invite
+                        {
+                            Username = sessionName,
+                            EventId = _eventId,
+                            Friend_Username = userName
+                        };
+                        DataContractJsonSerializer jsonSer = new DataContractJsonSerializer(typeof(Invite));
+                        MemoryStream ms = new MemoryStream();
+                        jsonSer.WriteObject(ms, invite);
+                        ms.Position = 0;
+                        StreamReader sr = new StreamReader(ms);
+                        StringContent theContent = new StringContent(sr.ReadToEnd(), System.Text.Encoding.UTF8, "application/json");
+                        await client.PostAsync(uri, theContent);
+                        var createdDialog = new MessageDialog("Event created!");
+                        await createdDialog.ShowAsync();
+                    }
+                    else
+                    {
+                        
+                    }
+                    break;
+
             }
+                
+        }
+
+        private void Lvi_Main_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame?.Navigate(typeof(Main));
         }
     }
 }
