@@ -326,3 +326,4 @@ C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\rest_API\obj\Debug\rest_API.dll
 C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\rest_API\obj\Debug\rest_API.pdb
 C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\rest_API\obj\Debug\rest_API.Migrations.OhGodSaveMe.resources
 C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\rest_API\obj\Debug\rest_API.csproj.GenerateResource.Cache
+C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\rest_API\obj\Debug\rest_API.Migrations.RegisterDate.resources

@@ -133,30 +133,30 @@ namespace Teste_PAD.Teste_PAD_XamlTypeInfo
         private void InitTypeTables()
         {
             _typeNameTable = new string[11];
-            _typeNameTable[0] = "Teste_PAD.ChangePassword";
+            _typeNameTable[0] = "Teste_PAD.Pages.ChangePassword";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "Teste_PAD.Index";
-            _typeNameTable[4] = "Teste_PAD.Details";
-            _typeNameTable[5] = "Teste_PAD.Edit";
-            _typeNameTable[6] = "Teste_PAD.Invites";
-            _typeNameTable[7] = "Teste_PAD.MainPage";
-            _typeNameTable[8] = "Teste_PAD.Main";
-            _typeNameTable[9] = "Teste_PAD.myEvents";
-            _typeNameTable[10] = "Teste_PAD.Register";
+            _typeNameTable[3] = "Teste_PAD.Pages.Index";
+            _typeNameTable[4] = "Teste_PAD.Pages.Details";
+            _typeNameTable[5] = "Teste_PAD.Pages.Edit";
+            _typeNameTable[6] = "Teste_PAD.Pages.Invites";
+            _typeNameTable[7] = "Teste_PAD.Pages.MainPage";
+            _typeNameTable[8] = "Teste_PAD.Pages.Main";
+            _typeNameTable[9] = "Teste_PAD.Pages.MyEvents";
+            _typeNameTable[10] = "Teste_PAD.Pages.Register";
 
             _typeTable = new global::System.Type[11];
-            _typeTable[0] = typeof(global::Teste_PAD.ChangePassword);
+            _typeTable[0] = typeof(global::Teste_PAD.Pages.ChangePassword);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::Teste_PAD.Index);
-            _typeTable[4] = typeof(global::Teste_PAD.Details);
-            _typeTable[5] = typeof(global::Teste_PAD.Edit);
-            _typeTable[6] = typeof(global::Teste_PAD.Invites);
-            _typeTable[7] = typeof(global::Teste_PAD.MainPage);
-            _typeTable[8] = typeof(global::Teste_PAD.Main);
-            _typeTable[9] = typeof(global::Teste_PAD.myEvents);
-            _typeTable[10] = typeof(global::Teste_PAD.Register);
+            _typeTable[3] = typeof(global::Teste_PAD.Pages.Index);
+            _typeTable[4] = typeof(global::Teste_PAD.Pages.Details);
+            _typeTable[5] = typeof(global::Teste_PAD.Pages.Edit);
+            _typeTable[6] = typeof(global::Teste_PAD.Pages.Invites);
+            _typeTable[7] = typeof(global::Teste_PAD.Pages.MainPage);
+            _typeTable[8] = typeof(global::Teste_PAD.Pages.Main);
+            _typeTable[9] = typeof(global::Teste_PAD.Pages.MyEvents);
+            _typeTable[10] = typeof(global::Teste_PAD.Pages.Register);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -191,15 +191,15 @@ namespace Teste_PAD.Teste_PAD_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_ChangePassword() { return new global::Teste_PAD.ChangePassword(); }
-        private object Activate_3_Index() { return new global::Teste_PAD.Index(); }
-        private object Activate_4_Details() { return new global::Teste_PAD.Details(); }
-        private object Activate_5_Edit() { return new global::Teste_PAD.Edit(); }
-        private object Activate_6_Invites() { return new global::Teste_PAD.Invites(); }
-        private object Activate_7_MainPage() { return new global::Teste_PAD.MainPage(); }
-        private object Activate_8_Main() { return new global::Teste_PAD.Main(); }
-        private object Activate_9_myEvents() { return new global::Teste_PAD.myEvents(); }
-        private object Activate_10_Register() { return new global::Teste_PAD.Register(); }
+        private object Activate_0_ChangePassword() { return new global::Teste_PAD.Pages.ChangePassword(); }
+        private object Activate_3_Index() { return new global::Teste_PAD.Pages.Index(); }
+        private object Activate_4_Details() { return new global::Teste_PAD.Pages.Details(); }
+        private object Activate_5_Edit() { return new global::Teste_PAD.Pages.Edit(); }
+        private object Activate_6_Invites() { return new global::Teste_PAD.Pages.Invites(); }
+        private object Activate_7_MainPage() { return new global::Teste_PAD.Pages.MainPage(); }
+        private object Activate_8_Main() { return new global::Teste_PAD.Pages.Main(); }
+        private object Activate_9_MyEvents() { return new global::Teste_PAD.Pages.MyEvents(); }
+        private object Activate_10_Register() { return new global::Teste_PAD.Pages.Register(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -211,7 +211,7 @@ namespace Teste_PAD.Teste_PAD_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  Teste_PAD.ChangePassword
+            case 0:   //  Teste_PAD.Pages.ChangePassword
                 userType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_0_ChangePassword;
                 userType.SetIsLocalType();
@@ -226,56 +226,56 @@ namespace Teste_PAD.Teste_PAD_XamlTypeInfo
                 xamlType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  Teste_PAD.Index
+            case 3:   //  Teste_PAD.Pages.Index
                 userType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_3_Index;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Teste_PAD.Details
+            case 4:   //  Teste_PAD.Pages.Details
                 userType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_4_Details;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 5:   //  Teste_PAD.Edit
+            case 5:   //  Teste_PAD.Pages.Edit
                 userType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_5_Edit;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 6:   //  Teste_PAD.Invites
+            case 6:   //  Teste_PAD.Pages.Invites
                 userType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_6_Invites;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 7:   //  Teste_PAD.MainPage
+            case 7:   //  Teste_PAD.Pages.MainPage
                 userType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_7_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 8:   //  Teste_PAD.Main
+            case 8:   //  Teste_PAD.Pages.Main
                 userType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_8_Main;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 9:   //  Teste_PAD.myEvents
+            case 9:   //  Teste_PAD.Pages.MyEvents
                 userType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_9_myEvents;
+                userType.Activator = Activate_9_MyEvents;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 10:   //  Teste_PAD.Register
+            case 10:   //  Teste_PAD.Pages.Register
                 userType = new global::Teste_PAD.Teste_PAD_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_10_Register;
                 userType.SetIsLocalType();

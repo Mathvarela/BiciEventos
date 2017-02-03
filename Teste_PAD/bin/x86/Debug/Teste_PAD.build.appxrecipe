@@ -378,6 +378,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Core\Teste_PAD.exe">
       <PackagePath>Teste_PAD.exe</PackagePath>

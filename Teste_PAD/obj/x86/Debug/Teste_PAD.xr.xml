@@ -54,7 +54,7 @@
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
     </RootType>
-    <RootType FullName="Teste_PAD.ChangePassword" />
+    <RootType FullName="Teste_PAD.Pages.ChangePassword" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="Content" />
       <RootProperty Name="PrimaryCommands" />
@@ -111,12 +111,12 @@
       <RootEvent Name="MapTapped" />
       <RootEvent Name="Loaded" />
     </RootType>
-    <RootType FullName="Teste_PAD.Index" />
+    <RootType FullName="Teste_PAD.Pages.Index" />
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
     </RootType>
-    <RootType FullName="Teste_PAD.Details" />
-    <RootType FullName="Teste_PAD.Edit" />
+    <RootType FullName="Teste_PAD.Pages.Details" />
+    <RootType FullName="Teste_PAD.Pages.Edit" />
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
       <RootProperty Name="VerticalScrollBarVisibility" />
       <RootProperty Name="Content" />
@@ -126,10 +126,10 @@
       <RootProperty Name="Margin" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
-    <RootType FullName="Teste_PAD.Invites" />
-    <RootType FullName="Teste_PAD.MainPage" />
-    <RootType FullName="Teste_PAD.Main" />
-    <RootType FullName="Teste_PAD.myEvents" />
-    <RootType FullName="Teste_PAD.Register" />
+    <RootType FullName="Teste_PAD.Pages.Invites" />
+    <RootType FullName="Teste_PAD.Pages.MainPage" />
+    <RootType FullName="Teste_PAD.Pages.Main" />
+    <RootType FullName="Teste_PAD.Pages.MyEvents" />
+    <RootType FullName="Teste_PAD.Pages.Register" />
   </Roots.RootTypes>
 </Roots>

@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="Teste_PAD.Pages.Details"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Teste_PAD"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <SplitView Name="sv_Menu" DisplayMode="CompactOverlay" CompactPaneLength="50" OpenPaneLength="200">
+            <SplitView.Pane>
+                <StackPanel Background="Gray">
+                    <Button Name="b_back" FontFamily="Segoe MDL2 Assets" Content="&#xE0A6;" Width="48" Height="48" Background="Gray" Click="b_back_Click"/>
+                    <Button Name="b_Hamburger" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="48" Height="48" Background="Gray" Click="b_Hamburger_Click"/>
+                    <Button Name="b_Edit" FontFamily="Segoe MDL2 Assets" Content="&#xE104;" Width="48" Height="48" Background="Gray" Visibility="Collapsed" Click="b_Edit_Click"/>
+                    <Button Name="b_Delete" FontFamily="Segoe MDL2 Assets" Content="&#xE74D;" Width="48" Height="48" Background="Gray" Visibility="Collapsed" Click="b_Delete_Click"/>
+                    <TextBlock Name="tblock_Welcome" FontSize="20" Padding="50 0 0 0"></TextBlock>
+                    <ListView>
+                        <ListViewItem Name="LviMain" Content="Main" Padding="50 0 0 0" Tapped="Lvi_Main_OnTapped"></ListViewItem>
+                        <ListViewItem Name="lvi_myEvents" Content="My Events" Padding="50 0 0 0" Tapped="lvi_myEvents_Tapped"></ListViewItem>
+                        <ListViewItem Name="lvi_invites" Content="Invites" Padding="50 0 0 0" Tapped="lvi_invite_Tapped"></ListViewItem>
+                        <ListViewItem Name="lvi_Create" Content="Create Event" Padding="50 0 0 0" Tapped="lvi_Create_Tapped"></ListViewItem>
+                        <ListViewItem Name="lvi_Logout" Content="Logout" Padding="50 0 0 0" Tapped="lvi_Logout_Tapped"></ListViewItem>
+                    </ListView>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <StackPanel Margin="48 0 0 0" Padding="10" Loaded="StackPanel_Loaded" Grid.Column="0">
+                    <Button x:Name="b_going" FontFamily="Segoe MDL2 Assets" Content="&#xE001;" Width="48" Height="48" Background="Gray" Click="b_going_Click" HorizontalAlignment="Right" Margin="0,0,3,0"/>
+                    <TextBlock x:Name="tblock_Users_Participating"  Grid.Column ="1" HorizontalAlignment="Right" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Button x:Name="b_invite" FontFamily="Segoe MDL2 Assets" Content="&#xE8FA;" Width="48" Height="48" Background="Gray" Click="B_invite_OnClick"  HorizontalAlignment="Right" Margin="0,10,3,0" RenderTransformOrigin="3.267,0.667"/>
+                    <TextBlock x:Name="tblock_Title" TextWrapping="Wrap" HorizontalAlignment="Left" Grid.Column="0" Margin="0,-100,88,0" />
+                    <TextBlock x:Name="tblock_Title_value" TextWrapping="Wrap" HorizontalAlignment="Left"  FontSize="30"/>
+                    <TextBlock x:Name="tblock_Start_Date" TextWrapping="Wrap" Text="Start Date" HorizontalAlignment="Left" Margin="0,0,0,0" Height="20"/>
+                    <TextBlock x:Name="tblock_Start_Date_value" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,88,0" Height="20"/>
+                    <TextBlock x:Name="tblock_Start_Time" TextWrapping="Wrap" Text="Start Time" HorizontalAlignment="Left" Margin="0,0,88,0" Height="20"/>
+                    <TextBlock x:Name="tblock_Start_Time_value" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,88,0" Height="20"/>
+                    <TextBlock x:Name="tblock_End_Date" TextWrapping="Wrap" Text="End Date" HorizontalAlignment="Left" Margin="0,0,88,0" Height="20"/>
+                    <TextBlock x:Name="tblock_End_Date_value" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,88,0" Height="20"/>
+                    <TextBlock x:Name="tblock_End_Time" TextWrapping="Wrap" Text="End Time" HorizontalAlignment="Left" Margin="0,0,88,0" Height="20"/>
+                    <TextBlock x:Name="tblock_End_Time_value" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,88,0" Height="20"/>
+                    <TextBlock x:Name="tblock_Description" Text="Description" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,88,0" Height="20"/>
+                    <TextBlock x:Name="tblock_Description_value" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,0,88,0"/>
+
+                    <Frame/>
+                    <maps:MapControl x:Name="MapControl" HorizontalAlignment="Center" Height="286" Width="314" MapServiceToken="qXGmhIw5FsDkOFhe9Kiu~jeFOhmzd_0JJIWkmDE7ALQ~Aj9YlKn3-rwHLxT_P2jY0-TIbpvgBlxH-cPTDXus16lzezQmApbNS7L1jLgSOr9w"/>
+                    <TextBlock x:Name="tblock_latitude"/>
+                    <TextBlock x:Name="tblock_longitude"/>
+                </StackPanel>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>
