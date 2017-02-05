@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-02-03T02:05:52.034</Modified>
+      <Modified>2017-02-05T17:38:20.131</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Teste_PAD.exe">
       <PackagePath>entrypoint\Teste_PAD.exe</PackagePath>
-      <Modified>2017-02-03T02:05:51.761</Modified>
+      <Modified>2017-02-05T17:38:19.757</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luisdeolpy\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -509,7 +509,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Core\Teste_PAD.exe">
       <PackagePath>Teste_PAD.exe</PackagePath>
-      <Modified>2017-02-03T02:05:52.030</Modified>
+      <Modified>2017-02-05T17:38:20.127</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

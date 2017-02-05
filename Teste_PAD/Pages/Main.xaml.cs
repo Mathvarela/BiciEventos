@@ -35,8 +35,13 @@ namespace Teste_PAD.Pages
 
         private async void StackPanel_Loaded(object sender, RoutedEventArgs e)
         {
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            var userId = int.Parse(localSettings.Values["sessionUser"].ToString());
             HttpClient client = new HttpClient();
-            string getUri = "http://localhost:5000/api/Events";
+            var getUri = "http://localhost:5000/api/Events";
+            var getInvitesUri = "http://localhost:5000/api/Invites";
+            var inviteResponse = await client.GetStringAsync(getInvitesUri);
+            var invites = JsonConvert.DeserializeObject<List<Invite>>(inviteResponse);
             Uri uri = new Uri(getUri);
             var response = await client.GetStringAsync(uri);
             List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
@@ -45,8 +50,12 @@ namespace Teste_PAD.Pages
                 ListBoxItem lb = new ListBoxItem {Content = item.Title};
                 lb_Events.Items.Add(lb);
             }
-            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             localSettings.Values["Allowed_to_Edit"] = false;
+            if (invites.Any(i => i.InvitedId == userId))
+            {
+                var dialog = new MessageDialog("You have unchecked invitations!") {Title = "Invitations"};
+                await dialog.ShowAsync();
+            }
         }
 
         private async void lvi_Logout_Tapped(object sender, TappedRoutedEventArgs e)
@@ -79,7 +88,8 @@ namespace Teste_PAD.Pages
             localSettings.Values["end_latitude"] = evento.EndLatitude;
             localSettings.Values["end_longitude"] = evento.EndLongitude;
             localSettings.Values["EventId"] = evento.Id;
-            if (evento.Username == localSettings.Values["sessionUser"].ToString())
+            var sessionId = int.Parse(localSettings.Values["sessionUser"].ToString());
+            if (evento.User.Id == sessionId)
             {
                 localSettings.Values["Allowed_to_Edit"] = true;
             }
@@ -93,17 +103,17 @@ namespace Teste_PAD.Pages
 
         private async void b_Search_Click(object sender, RoutedEventArgs e)
         {
-            HttpClient client = new HttpClient();
-            string query = tb_Search.Text;
-            string getUri = "http://localhost:5000/api/Events";
-            Uri uri = new Uri(getUri);
+            var client = new HttpClient();
+            var query = tb_Search.Text;
+            var getUri = "http://localhost:5000/api/Events";
+            var uri = new Uri(getUri);
             var response = await client.GetStringAsync(uri);
-            List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
-            List<Event> events = listEvents.FindAll(x => x.Title.Contains(query));
+            var listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
+            var events = listEvents.FindAll(x => x.Title.Contains(query));
             lb_Events.Items.Clear();
             foreach (Event item in events)
             {
-                ListBoxItem lb = new ListBoxItem {Content = item.Title};
+                var lb = new ListBoxItem {Content = item.Title};
                 lb_Events.Items.Add(lb);
             }
         }

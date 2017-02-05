@@ -155,8 +155,8 @@ namespace Teste_PAD.Pages
                 EndLongitude = finalPoint.Position.Longitude,
                 StartTime = tp_Start_Time.Time.ToString(),
                 EndTime = tp_End_Time.Time.ToString(),
-                Username = value.ToString(),
-                UserId = 8 
+                //Username = value.ToString(),
+                UserId =  int.Parse(value.ToString())
             };
             var json = JsonConvert.SerializeObject(objEvento);
             StringContent theContent = new StringContent(json, System.Text.Encoding.UTF8, "application/json");

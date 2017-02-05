@@ -58,7 +58,7 @@ namespace Teste_PAD.Pages
             localSettings.Values["start_longitude"] = evento.StartLongitude;
             localSettings.Values["end_latitude"] = evento.EndLatitude;
             localSettings.Values["end_longitude"] = evento.EndLongitude;
-            if (evento.Username == localSettings.Values["sessionUser"].ToString())
+            if (evento.User.Id == int.Parse(localSettings.Values["sessionUser"].ToString()))
             {
                 localSettings.Values["Allowed_to_Edit"] = true;
             }
@@ -87,7 +87,7 @@ namespace Teste_PAD.Pages
             Uri uri = new Uri(getUri);
             var response = await client.GetStringAsync(uri);
             List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
-            List<Event> events = listEvents.FindAll(x => x.Title.Contains(query) || x.Username == value.ToString());
+            List<Event> events = listEvents.FindAll(x => x.Title.Contains(query) || x.User.Id == int.Parse(value.ToString()));
             lb_Events.Items.Clear();
             foreach (Event item in events)
             {

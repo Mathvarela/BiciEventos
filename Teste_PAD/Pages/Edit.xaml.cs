@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.Serialization.Json;
 using Teste_PAD.Models;
 using Windows.Devices.Geolocation;
 using Windows.Services.Maps;
@@ -46,8 +44,6 @@ namespace Teste_PAD.Pages
                 tblock_longitude.Text = evento.StartLongitude.ToString();
             }
             base.OnNavigatedTo(e);
-
-
         }
 
         public Edit()
@@ -60,7 +56,7 @@ namespace Teste_PAD.Pages
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             var eventId = Convert.ToInt32(localSettings.Values["EventId"]);
             HttpClient client = new HttpClient();
-            string getUri = "http://localhost:50859/api/Events";
+            string getUri = "http://localhost:5000/api/Events";
             Uri uri = new Uri(getUri);
             var response = await client.GetStringAsync(uri);
             List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
@@ -101,11 +97,11 @@ namespace Teste_PAD.Pages
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             Object value = localSettings.Values["sessionUser"];
             var client = new HttpClient();
-            string getUri = string.Format("http://localhost:50859/api/Events/{0}",localSettings.Values["Event_id"].ToString());
+            string getUri = string.Format("http://localhost:5000/api/Events/{0}",localSettings.Values["EventId"].ToString());
             var uri = new Uri(getUri);
             var evento = new Event()
             {
-                Id = Convert.ToInt32(localSettings.Values["Event_id"]),
+                Id = Convert.ToInt32(localSettings.Values["EventId"]),
                 Title = tb_Title.Text,
                 Description = tb_Description.Text,
                 StartDate = cdp_StartDate.Date.Value.DateTime,
@@ -116,15 +112,12 @@ namespace Teste_PAD.Pages
                 EndLongitude = Convert.ToDouble(localSettings.Values["Event_endLongitude"]),
                 StartTime = tp_Start_Time.Time.ToString(),
                 EndTime = tp_End_Time.Time.ToString(),
-                Username = value.ToString()
+                UserId = int.Parse(value.ToString())
+                //Username = value.ToString()
             };
-            DataContractJsonSerializer jsonSer = new DataContractJsonSerializer(typeof(Event));
-            MemoryStream ms = new MemoryStream();
-            jsonSer.WriteObject(ms, evento);
-            ms.Position = 0;
-            StreamReader sr = new StreamReader(ms);
-            StringContent theContent = new StringContent(sr.ReadToEnd(), System.Text.Encoding.UTF8, "application/json");
-            var put_response = await client.PutAsync(uri, theContent);
+            var json = JsonConvert.SerializeObject(evento);
+            StringContent theContent = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            await client.PutAsync(uri, theContent);
             var editDialog = new MessageDialog("Changes are saved!");
             await editDialog.ShowAsync();
             Frame?.Navigate(typeof(Details), evento);
@@ -158,14 +151,18 @@ namespace Teste_PAD.Pages
             MapControl.Center = start;
             MapControl.LandmarksVisible = true;
             MapControl.ZoomLevel = 12;
-            MapIcon startIcon = new MapIcon();
-            startIcon.Location = start;
-            startIcon.ZIndex = 0;
+            MapIcon startIcon = new MapIcon
+            {
+                Location = start,
+                ZIndex = 0
+            };
             MapControl.MapElements.Add(startIcon);
 
-            MapIcon endIcon = new MapIcon();
-            endIcon.Location = end;
-            endIcon.ZIndex = 0;
+            MapIcon endIcon = new MapIcon
+            {
+                Location = end,
+                ZIndex = 0
+            };
             MapControl.MapElements.Add(endIcon);
 
             MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(
@@ -176,9 +173,11 @@ namespace Teste_PAD.Pages
                         );
             if (routeResult.Status == MapRouteFinderStatus.Success)
             {
-                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
-                viewOfRoute.RouteColor = Colors.Yellow;
-                viewOfRoute.OutlineColor = Colors.Black;
+                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route)
+                {
+                    RouteColor = Colors.Yellow,
+                    OutlineColor = Colors.Black
+                };
                 MapControl.Routes.Add(viewOfRoute);
                 await MapControl.TrySetViewBoundsAsync(
                     routeResult.Route.BoundingBox,
@@ -222,9 +221,11 @@ namespace Teste_PAD.Pages
                     );
                     if (routeResult.Status == MapRouteFinderStatus.Success)
                     {
-                        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
-                        viewOfRoute.RouteColor = Colors.Yellow;
-                        viewOfRoute.OutlineColor = Colors.Black;
+                        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route)
+                        {
+                            RouteColor = Colors.Yellow,
+                            OutlineColor = Colors.Black
+                        };
                         MapControl.Routes.Add(viewOfRoute);
                         await MapControl.TrySetViewBoundsAsync(
                             routeResult.Route.BoundingBox,

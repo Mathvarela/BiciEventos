@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using Teste_PAD.Models;
 using Windows.UI.Popups;
@@ -27,19 +25,20 @@ namespace Teste_PAD.Pages
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             Object value = localSettings.Values["sessionUser"];
             var client = new HttpClient();
-            string getUri = "http://localhost:5000/api/Users";
+            string getUri = "http://localhost:5000/api/Users/"+value;
             var uri = new Uri(getUri);
             var response = await client.GetStringAsync(uri);
-            List<User> listUser = JsonConvert.DeserializeObject<List<User>>(response);
+            User user = JsonConvert.DeserializeObject<User>(response);
+            //List<User> listUser = JsonConvert.DeserializeObject<List<User>>(response);
             try
             {
-                var user = listUser.SingleOrDefault(x => x.Id == int.Parse(value.ToString()));
+                //var user = listUser.SingleOrDefault(x => x.Id == int.Parse(value.ToString()));
                 if (pb_Password.Password == user.Password)
                 {
                     if (pb_NewPassword.Password == pb_NewPassword_repeat.Password)
                     {
-                        string getUserUri = string.Format("http://localhost:5000/api/Users/{0}", user.Id);
-                        var userUri = new Uri(getUserUri);
+                        //string getUserUri = string.Format("http://localhost:5000/api/Users/{0}", user.Id);
+                        //var userUri = new Uri(getUserUri);
                         var editedUser = new User
                         {
                             Id = user.Id,
@@ -49,7 +48,7 @@ namespace Teste_PAD.Pages
                         };
                         var json = JsonConvert.SerializeObject(editedUser);
                         StringContent theContent = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                        var putResponse = await client.PutAsync(userUri, theContent);
+                        var putResponse = await client.PutAsync(uri, theContent);
                         var dialog = new MessageDialog(putResponse.ToString());
                         await dialog.ShowAsync();
                         var successDialog = new MessageDialog("Password sucessfully changed!");

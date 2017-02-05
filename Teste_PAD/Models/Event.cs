@@ -15,7 +15,7 @@ namespace Teste_PAD.Models
         public double EndLongitude { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
-        public string Username { get; set; }
+        //public string Username { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
     }
