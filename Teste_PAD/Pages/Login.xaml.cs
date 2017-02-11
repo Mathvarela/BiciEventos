@@ -23,11 +23,20 @@ namespace Teste_PAD.Pages
         }
         private async void b_Login_Click(object sender, RoutedEventArgs e)
         {
-            var client = new HttpClient();
-            string getUri = "http://localhost:5000/api/Users";
-            var uri = new Uri(getUri);
-            var response = await client.GetStringAsync(uri);
-            List<User> listUser = JsonConvert.DeserializeObject<List<User>>(response);
+            var context = new BiciEventosDbContext();
+            var listUser = new List<User>();
+            try
+            {
+                var client = new HttpClient();
+                string getUri = "http://localhost:5000/api/Users";
+                var uri = new Uri(getUri);
+                var response = await client.GetStringAsync(uri);
+                listUser = JsonConvert.DeserializeObject<List<User>>(response);
+            }
+            catch (Exception err)
+            {
+                listUser = context.Users.ToList();
+            }
             var user = listUser.FirstOrDefault(x => x.Username == tb_Username.Text);
             if (pb_Password.Password == user.Password)
             {

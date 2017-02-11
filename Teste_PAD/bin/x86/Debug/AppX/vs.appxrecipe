@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-02-11T14:00:31.365</Modified>
+      <Modified>2017-02-11T15:00:41.596</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Teste_PAD.exe">
       <PackagePath>entrypoint\Teste_PAD.exe</PackagePath>
-      <Modified>2017-02-11T14:00:30.517</Modified>
+      <Modified>2017-02-11T15:00:41.231</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luisdeolpy\.nuget\packages\Microsoft.AspNetCore.Hosting.Abstractions\1.1.0\lib\netstandard1.3\Microsoft.AspNetCore.Hosting.Abstractions.dll">
       <PackagePath>Microsoft.AspNetCore.Hosting.Abstractions.dll</PackagePath>
@@ -657,11 +657,11 @@
     <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-02-11T13:14:44.263</Modified>
+      <Modified>2017-02-11T14:25:55.907</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\luisdeolpy\Documents\GitHub\BiciEventos\Teste_PAD\bin\x86\Debug\Core\Teste_PAD.exe">
       <PackagePath>Teste_PAD.exe</PackagePath>
-      <Modified>2017-02-11T14:00:31.359</Modified>
+      <Modified>2017-02-11T15:00:41.592</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

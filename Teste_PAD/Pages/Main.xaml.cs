@@ -38,18 +38,43 @@ namespace Teste_PAD.Pages
             var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             var userId = int.Parse(localSettings.Values["sessionUser"].ToString());
             HttpClient client = new HttpClient();
-            var getUri = "http://localhost:5000/api/Events";
+            var listEvents = new List<Event>();
+            var context = new BiciEventosDbContext();
+            try
+            {
+                var getUri = "http://localhost:5000/api/Events";
+                Uri uri = new Uri(getUri);
+                var response = await client.GetStringAsync(uri);
+                listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
+                var fEvent = listEvents.First();
+                context.Events.RemoveRange(context.Events);
+                context.SaveChanges();
+                lb_Events.Items.Clear();
+                var users = context.Users.ToList();
+                var events = context.Events.ToList();
+                foreach (Event item in listEvents)
+                {
+                    ListBoxItem lb = new ListBoxItem { Content = item.Title };
+                    lb_Events.Items.Add(lb);
+                    context.Events.Add(item);
+                }
+                context.SaveChanges();
+            }
+
+            catch(Exception err)
+            {
+                Console.WriteLine(err.Message);
+                listEvents = context.Events.ToList();
+                foreach (Event item in listEvents)
+                {
+                    ListBoxItem lb = new ListBoxItem { Content = item.Title };
+                    lb_Events.Items.Add(lb);
+                }
+            }
             var getInvitesUri = "http://localhost:5000/api/Invites";
             var inviteResponse = await client.GetStringAsync(getInvitesUri);
             var invites = JsonConvert.DeserializeObject<List<Invite>>(inviteResponse);
-            Uri uri = new Uri(getUri);
-            var response = await client.GetStringAsync(uri);
-            List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
-            foreach (Event item in listEvents)
-            {
-                ListBoxItem lb = new ListBoxItem {Content = item.Title};
-                lb_Events.Items.Add(lb);
-            }
+
             localSettings.Values["Allowed_to_Edit"] = false;
             if (invites.Any(i => i.InvitedId == userId))
             {

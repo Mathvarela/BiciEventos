@@ -21,5 +21,6 @@ namespace Teste_PAD.Models
         public User User { get; set; }
 
         public List<Attendance> Attendances { get; set; }
+        public IEnumerable<Invite> Invites { get; set; }
     }
 }
