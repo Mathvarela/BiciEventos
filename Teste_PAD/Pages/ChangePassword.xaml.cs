@@ -49,8 +49,6 @@ namespace Teste_PAD.Pages
                         var json = JsonConvert.SerializeObject(editedUser);
                         StringContent theContent = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
                         var putResponse = await client.PutAsync(uri, theContent);
-                        var dialog = new MessageDialog(putResponse.ToString());
-                        await dialog.ShowAsync();
                         var successDialog = new MessageDialog("Password sucessfully changed!");
                         await successDialog.ShowAsync();
                         Frame?.Navigate(typeof(Main));

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using Teste_PAD.Models;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -45,26 +46,46 @@ namespace Teste_PAD.Pages
 
         private async void lb_Invites_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListBoxItem lbs = (sender as ListBox).SelectedItem as ListBoxItem;
-            var eventId = Convert.ToInt32(lbs.Tag);
-
+            Invite lbs = lb_Events.SelectedItem as Invite;
+            var eventId = lbs.EventId;
+            var inviterId = lbs.InviterId;
+            var invitedId = lbs.InvitedId;
+            var invite = new Invite
+            {
+                EventId = eventId,
+                InvitedId = invitedId,
+                InviterId = inviterId
+            };
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             HttpClient client = new HttpClient();
             string getUri = "http://localhost:5000/api/Events";
             string getUriAttendances = "http://localhost:5000/api/Attendances";
+            string deleteInvite = "http://localhost:5000/api/Invites";
             Uri uri = new Uri(getUri);
             Uri uriAttendance = new Uri(getUriAttendances);
+            Uri uriDeleteInvite = new Uri(deleteInvite);
             var response = await client.GetStringAsync(uri);
             var responseEg = await client.GetStringAsync(uriAttendance);
+            var json = JsonConvert.SerializeObject(invite);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var request = new HttpRequestMessage
+            {
+                Content = content, 
+                Method = HttpMethod.Delete,
+                RequestUri = uriDeleteInvite
+            };
+            await client.SendAsync(request);
             List<Event> listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
-            List<Attendance> invites = JsonConvert.DeserializeObject<List<Attendance>>(response);
+            List<Attendance> attendances = JsonConvert.DeserializeObject<List<Attendance>>(responseEg);
+            
             var evento = listEvents.FirstOrDefault(x => x.Id == eventId);
-            var usersParticipations = invites.FindAll(x => x.EventId.Equals(eventId));
+            var usersParticipations = attendances.FindAll(x => x.EventId.Equals(eventId));
             localSettings.Values["Users_Participating"] = usersParticipations.Count.ToString();
             if (evento.UserId == int.Parse(localSettings.Values["sessionUser"].ToString()))
             {
                 localSettings.Values["Allowed_to_Edit"] = true;
             }
+
             Frame?.Navigate(typeof(Details), evento);
         }
 
@@ -83,16 +104,7 @@ namespace Teste_PAD.Pages
             var invites = listInvites.FindAll(x => x.InvitedId == int.Parse(localSettings.Values["sessionUser"].ToString()));
             try
             {
-                foreach (Invite item in invites)
-                {
-                    var evento = listEvents.SingleOrDefault(x => x.Id == item.EventId);
-                    ListBoxItem lb = new ListBoxItem
-                    {
-                        Tag = item.EventId,
-                        Content = "Invitación de " + evento.User.Username + " - " + evento.Title
-                    };
-                    lb_Events.Items.Add(lb);
-                }
+                lb_Events.ItemsSource = invites;
             }
             catch
             {

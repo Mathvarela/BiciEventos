@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Teste_PAD.Models
 {
@@ -18,5 +19,7 @@ namespace Teste_PAD.Models
         //public string Username { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
+
+        public List<Attendance> Attendances { get; set; }
     }
 }
