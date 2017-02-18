@@ -96,11 +96,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20170211142427_FirstPersistenceMigration.cs" />
-    <Compile Include="Migrations\20170211142427_FirstPersistenceMigration.designer.cs">
-      <DependentUpon>20170211142427_FirstPersistenceMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\BiciEventosDbContextModelSnapshot.cs" />
     <Compile Include="Models\BiciEventosDbContext.cs" />
     <Compile Include="Pages\ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>

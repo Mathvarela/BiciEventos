@@ -54,7 +54,8 @@ namespace Teste_PAD.Pages
             {
                 EventId = eventId,
                 InvitedId = invitedId,
-                InviterId = inviterId
+                InviterId = inviterId,
+                IsRead = true
             };
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             HttpClient client = new HttpClient();
@@ -71,7 +72,7 @@ namespace Teste_PAD.Pages
             var request = new HttpRequestMessage
             {
                 Content = content, 
-                Method = HttpMethod.Delete,
+                Method = HttpMethod.Put,
                 RequestUri = uriDeleteInvite
             };
             await client.SendAsync(request);

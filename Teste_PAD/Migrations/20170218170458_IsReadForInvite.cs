@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Teste_PAD.Migrations
 {
-    public partial class FirstPersistenceMigration : Migration
+    public partial class IsReadForInvite : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,7 +82,8 @@ namespace Teste_PAD.Migrations
                 {
                     EventId = table.Column<int>(nullable: false),
                     InvitedId = table.Column<int>(nullable: false),
-                    InviterId = table.Column<int>(nullable: false)
+                    InviterId = table.Column<int>(nullable: false),
+                    IsRead = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

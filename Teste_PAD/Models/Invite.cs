@@ -10,6 +10,8 @@ namespace Teste_PAD.Models
         public User Inviter { get; set; }
         public User Invited { get; set; }
 
+        public bool IsRead { get; set; }
+
         public override string ToString()
         {
             return $"{Inviter.Username} - {Event.Description}";

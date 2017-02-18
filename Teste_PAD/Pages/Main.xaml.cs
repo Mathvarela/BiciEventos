@@ -46,7 +46,6 @@ namespace Teste_PAD.Pages
                 Uri uri = new Uri(getUri);
                 var response = await client.GetStringAsync(uri);
                 listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
-                var fEvent = listEvents.First();
                 context.Events.RemoveRange(context.Events);
                 context.SaveChanges();
                 lb_Events.Items.Clear();
@@ -76,7 +75,7 @@ namespace Teste_PAD.Pages
             var invites = JsonConvert.DeserializeObject<List<Invite>>(inviteResponse);
 
             localSettings.Values["Allowed_to_Edit"] = false;
-            if (invites.Any(i => i.InvitedId == userId))
+            if (invites.Any(i => i.InvitedId == userId && i.IsRead==false))
             {
                 var dialog = new MessageDialog("You have unchecked invitations!") {Title = "Invitations"};
                 await dialog.ShowAsync();

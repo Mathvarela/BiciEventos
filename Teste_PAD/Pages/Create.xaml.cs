@@ -61,13 +61,10 @@ namespace Teste_PAD.Pages
         private async void MapControl_MapTapped(Windows.UI.Xaml.Controls.Maps.MapControl sender, Windows.UI.Xaml.Controls.Maps.MapInputEventArgs args)
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            int icons = Convert.ToInt32(localSettings.Values["icons"]);
+            var icons = Convert.ToInt32(localSettings.Values["icons"]);
             var tappedGeoPosition = args.Location.Position;
-            tblock_latitude.Text = tappedGeoPosition.Latitude.ToString();
-            tblock_longitude.Text = tappedGeoPosition.Longitude.ToString();
             if ((icons > 1) && (_first != 0))
             {
-                tb_Description.Text = icons.ToString();
                 MapControl.MapElements.Clear();
                 MapControl.Routes.Clear();
                 icons = 0;

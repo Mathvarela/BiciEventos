@@ -8,8 +8,8 @@ using Teste_PAD.Models;
 namespace Teste_PAD.Migrations
 {
     [DbContext(typeof(BiciEventosDbContext))]
-    [Migration("20170211142427_FirstPersistenceMigration")]
-    partial class FirstPersistenceMigration
+    [Migration("20170218170458_IsReadForInvite")]
+    partial class IsReadForInvite
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,8 @@ namespace Teste_PAD.Migrations
                     b.Property<int>("InvitedId");
 
                     b.Property<int>("InviterId");
+
+                    b.Property<bool>("IsRead");
 
                     b.HasKey("EventId", "InvitedId", "InviterId");
 

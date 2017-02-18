@@ -70,6 +70,8 @@ namespace Teste_PAD.Migrations
 
                     b.Property<int>("InviterId");
 
+                    b.Property<bool>("IsRead");
+
                     b.HasKey("EventId", "InvitedId", "InviterId");
 
                     b.HasIndex("InvitedId");
