@@ -155,5 +155,10 @@ namespace Teste_PAD.Pages
         {
             Frame?.Navigate(typeof(ChangePassword));
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame?.Navigate(typeof(Index));
+        }
     }
 }

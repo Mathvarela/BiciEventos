@@ -73,7 +73,7 @@ namespace Teste_PAD.Pages
             {
                 MapIcon icon = new MapIcon();
                 icon.Location = new Geopoint(tappedGeoPosition);
-                icon.ZIndex = 0;
+                //icon.ZIndex = 0;
                 MapControl.MapElements.Add(icon);
                 icons++;
                 _first++;
@@ -90,9 +90,11 @@ namespace Teste_PAD.Pages
                         );
                         if (routeResult.Status == MapRouteFinderStatus.Success)
                         {
-                            MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
-                            viewOfRoute.RouteColor = Colors.Yellow;
-                            viewOfRoute.OutlineColor = Colors.Black;
+                            MapRouteView viewOfRoute = new MapRouteView(routeResult.Route)
+                            {
+                                RouteColor = Colors.Yellow,
+                                OutlineColor = Colors.Black
+                            };
                             MapControl.Routes.Add(viewOfRoute);
                             await MapControl.TrySetViewBoundsAsync(
                                 routeResult.Route.BoundingBox,
@@ -114,8 +116,9 @@ namespace Teste_PAD.Pages
             MapControl.Center =
                 new Geopoint(new BasicGeoposition()
                 {
-                    Latitude = 40.4528057109565,
-                    Longitude = -3.73339807614684
+                    Latitude = -5.8118063025176525,
+                    Longitude = -35.204265983775258,
+                    Altitude = 2.8188086673858057E-278
                 });
             MapControl.LandmarksVisible = true;
             MapControl.ZoomLevel = 12;
@@ -125,16 +128,6 @@ namespace Teste_PAD.Pages
 
         private async void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            var initialPoint = new Geopoint(new BasicGeoposition()
-            {
-                Latitude = 40.4528057109565,
-                Longitude = -3.73339807614684
-            });
-            var finalPoint = new Geopoint(new BasicGeoposition()
-            {
-                Latitude = 49.4528057109565,
-                Longitude = -10.73339807614684
-            });
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             Object value = localSettings.Values["sessionUser"];
             var client = new HttpClient();
@@ -146,10 +139,11 @@ namespace Teste_PAD.Pages
                 Description = tb_Description.Text,
                 StartDate = cdp_StartDate.Date.Value.DateTime,
                 EndDate = cdp_EndDate.Date.Value.DateTime,
-                StartLatitude = initialPoint.Position.Latitude,
-                EndLatitude = finalPoint.Position.Latitude,
-                StartLongitude = initialPoint.Position.Longitude,
-                EndLongitude = finalPoint.Position.Longitude,
+                //StartLatitude = initialPoint.Position.Latitude,
+                StartLatitude = _startLocation.Position.Latitude,
+                EndLatitude = _endLocation.Position.Latitude,
+                StartLongitude = _startLocation.Position.Longitude,
+                EndLongitude = _endLocation.Position.Longitude,
                 StartTime = tp_Start_Time.Time.ToString(),
                 EndTime = tp_End_Time.Time.ToString(),
                 //Username = value.ToString(),
@@ -161,6 +155,8 @@ namespace Teste_PAD.Pages
             var createdDialog = new MessageDialog("Event created!");
             await createdDialog.ShowAsync();
             tblock_Title.Text = objEvento.Title;
+            //Passing values
+
             Frame?.Navigate(typeof(Details), objEvento);
         }
 

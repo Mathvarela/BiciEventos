@@ -24,6 +24,8 @@ namespace Teste_PAD.Pages
     public sealed partial class Details : Page
     {
         private int _eventId;
+        private Geopoint _startGeopoint;
+        private Geopoint _endGeopoint;
 
         public Details()
         {
@@ -51,6 +53,17 @@ namespace Teste_PAD.Pages
                 tblock_Description_value.Text = evento.Description;
             }
             _eventId = (int) localSettings.Values["EventId"];
+            _startGeopoint = new Geopoint(new BasicGeoposition()
+            {
+                Latitude = evento.StartLatitude,
+                Longitude = evento.StartLongitude
+            });
+
+            _endGeopoint = new Geopoint(new BasicGeoposition()
+            {
+                Latitude = evento.EndLatitude,
+                Longitude = evento.EndLongitude
+            });
             base.OnNavigatedTo(e);
 
 
@@ -101,29 +114,29 @@ namespace Teste_PAD.Pages
         private async void MapControl_Loaded(object sender, RoutedEventArgs e)
         {
             var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            Geopoint start = new Geopoint(new BasicGeoposition()
-            {
-                Latitude = Convert.ToDouble(localSettings.Values["Event_startLatitude"]),
-                Longitude = Convert.ToDouble(localSettings.Values["Event_startLongitude"]),
-            });
-            Geopoint end = new Geopoint(new BasicGeoposition()
-            {
-                Latitude = Convert.ToDouble(localSettings.Values["Event_endLatitude"]),
-                Longitude = Convert.ToDouble(localSettings.Values["Event_endLongitude"]),
-            });
-            MapControl.Center = start;
+            //Geopoint start = new Geopoint(new BasicGeoposition()
+            //{
+            //    Latitude = Convert.ToDouble(localSettings.Values["Event_startLatitude"]),
+            //    Longitude = Convert.ToDouble(localSettings.Values["Event_startLongitude"]),
+            //});
+            //Geopoint end = new Geopoint(new BasicGeoposition()
+            //{
+            //    Latitude = Convert.ToDouble(localSettings.Values["Event_endLatitude"]),
+            //    Longitude = Convert.ToDouble(localSettings.Values["Event_endLongitude"]),
+            //});
+            MapControl.Center = _startGeopoint;
             MapControl.LandmarksVisible = true;
             MapControl.ZoomLevel = 12;
             MapIcon startIcon = new MapIcon
             {
-                Location = start,
+                Location = _startGeopoint,
                 ZIndex = 0
             };
             MapControl.MapElements.Add(startIcon);
 
             MapIcon endIcon = new MapIcon
             {
-                Location = end,
+                Location = _endGeopoint,
                 ZIndex = 0
             };
             MapControl.MapElements.Add(endIcon);

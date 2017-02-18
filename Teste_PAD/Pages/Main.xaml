@@ -6,8 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Add" Label="Confirm" ClickMode="Press" Click="AppBarButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
         <SplitView Name="sv_Menu" DisplayMode="CompactOverlay" CompactPaneLength="50" OpenPaneLength="200">
             <SplitView.Pane>
                 <StackPanel Background="Gray">
