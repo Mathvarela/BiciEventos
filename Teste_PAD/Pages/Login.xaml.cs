@@ -42,6 +42,7 @@ namespace Teste_PAD.Pages
             {
                 var successDialog = new MessageDialog("Successfully logged in!");
                 await successDialog.ShowAsync();
+                context.Users.Add(user);
                 Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 localSettings.Values["sessionUser"] = user.Id;
                 Frame?.Navigate(typeof(Main));

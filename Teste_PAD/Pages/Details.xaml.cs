@@ -92,11 +92,13 @@ namespace Teste_PAD.Pages
         {
             var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             var eventId = Convert.ToInt32(localSettings.Values["EventId"]);
-            var client = new HttpClient();
-            var getUri = "http://localhost:5000/api/Attendances";
-            var uri = new Uri(getUri);
-            var response = await client.GetStringAsync(uri);
-            var events = JsonConvert.DeserializeObject<List<Attendance>>(response);
+            //var client = new HttpClient();
+            //var getUri = "http://localhost:5000/api/Attendances";
+            //var uri = new Uri(getUri);
+            //var response = await client.GetStringAsync(uri);
+            //var events = JsonConvert.DeserializeObject<List<Attendance>>(response);
+            var context = new BiciEventosDbContext();
+            var events = context.Attendances.ToList();
             var usersParticipations = events.FindAll(x => x.EventId.Equals(eventId));
             tblock_Users_Participating.Text = usersParticipations.Count.ToString() + " Confirmados";
         }

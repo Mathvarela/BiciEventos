@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,18 +40,34 @@ namespace Teste_PAD.Pages
             var userId = int.Parse(localSettings.Values["sessionUser"].ToString());
             HttpClient client = new HttpClient();
             var listEvents = new List<Event>();
+            var listInvites = new List<Invite>();
+            var listAttendances = new List<Attendance>();
             var context = new BiciEventosDbContext();
             try
             {
                 var getUri = "http://localhost:5000/api/Events";
                 Uri uri = new Uri(getUri);
+                var getInvitesUri = "http://localhost:5000/api/Invites";
+                var getAttendances = "http://localhost:5000/api/Attendances";
+                Uri uriAttendance = new Uri(getAttendances);
+                var inviteResponse = await client.GetStringAsync(getInvitesUri);
                 var response = await client.GetStringAsync(uri);
+                var attendanceResponse = await client.GetStringAsync(uriAttendance);
+                listAttendances = JsonConvert.DeserializeObject<List<Attendance>>(attendanceResponse);
                 listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
+                listInvites = JsonConvert.DeserializeObject<List<Invite>>(inviteResponse);
                 context.Events.RemoveRange(context.Events);
                 context.SaveChanges();
+                context.Users.RemoveRange(context.Users);
+                context.SaveChanges();
+                context.Attendances.RemoveRange(context.Attendances);
+                context.SaveChanges();
+                //context.Invites.RemoveRange(context.Invites);
+                //context.SaveChanges();
                 lb_Events.Items.Clear();
-                var users = context.Users.ToList();
-                var events = context.Events.ToList();
+                //var users = context.Users.ToList();
+                //var events = context.Events.ToList();
+                //var invites = context.Invites.ToList();
                 foreach (Event item in listEvents)
                 {
                     ListBoxItem lb = new ListBoxItem { Content = item.Title };
@@ -58,24 +75,33 @@ namespace Teste_PAD.Pages
                     context.Events.Add(item);
                 }
                 context.SaveChanges();
+                foreach (var atd in listAttendances)
+                {
+                    context.Attendances.Add(atd);
+                }
+                context.SaveChanges();
+                //foreach (var invite in listInvites)
+                //{
+                //    context.Invites.Add(invite);
+                //}
+                //context.SaveChanges();
             }
 
             catch(Exception err)
             {
                 Console.WriteLine(err.Message);
+                listAttendances = context.Attendances.ToList();
                 listEvents = context.Events.ToList();
+                //listInvites = context.Invites.ToList();
                 foreach (Event item in listEvents)
                 {
                     ListBoxItem lb = new ListBoxItem { Content = item.Title };
                     lb_Events.Items.Add(lb);
                 }
             }
-            var getInvitesUri = "http://localhost:5000/api/Invites";
-            var inviteResponse = await client.GetStringAsync(getInvitesUri);
-            var invites = JsonConvert.DeserializeObject<List<Invite>>(inviteResponse);
 
             localSettings.Values["Allowed_to_Edit"] = false;
-            if (invites.Any(i => i.InvitedId == userId && i.IsRead==false))
+            if (listInvites.Any(i => i.InvitedId == userId && i.IsRead == false))
             {
                 var dialog = new MessageDialog("You have unchecked invitations!") {Title = "Invitations"};
                 await dialog.ShowAsync();
@@ -94,18 +120,43 @@ namespace Teste_PAD.Pages
         private async void lb_Events_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            var client = new HttpClient();
-            string getUri = "http://localhost:5000/api/Events";
-            string getUriEG = "http://localhost:5000/api/Attendances";
-            var uri = new Uri(getUri);
-            var uriEg = new Uri(getUriEG);
-            var response = await client.GetStringAsync(uri);
-            await client.GetStringAsync(uriEg);
-            var listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
-            var events = JsonConvert.DeserializeObject<List<Attendance>>(response);
+            List<Event> listEvents;
+            List<Attendance> listAttendances = new List<Attendance>();
+            var context = new BiciEventosDbContext();
+            //try
+            //{
+            //    var client = new HttpClient();
+            //    string getUri = "http://localhost:5000/api/Events";
+            //    string getUriEG = "http://localhost:5000/api/Attendances";
+            //    var uri = new Uri(getUri);
+            //    var uriEg = new Uri(getUriEG);
+            //    var response = await client.GetStringAsync(uri);
+            //    var atdResponse = await client.GetStringAsync(uriEg);
+            //    listEvents = JsonConvert.DeserializeObject<List<Event>>(response);
+            //    listAttendances = JsonConvert.DeserializeObject<List<Attendance>>(atdResponse);
+            //    context.Events.RemoveRange(context.Events);
+            //    context.SaveChanges();
+            //    context.Attendances.RemoveRange(context.Attendances);
+            //    context.SaveChanges();
+            //    foreach (var evt in listEvents)
+            //    {
+            //        context.Events.Add(evt);
+            //    }
+            //    context.SaveChanges();
+            //    foreach (var atd in listAttendances)
+            //    {
+            //        context.Attendances.Add(atd);
+            //    }
+            //    context.SaveChanges();
+            //}
+            //catch (Exception ex)
+            //{
+                listEvents = context.Events.Include(ev=> ev.User).ToList();
+                listAttendances = context.Attendances.ToList();
+            //}
             var evento = listEvents.FirstOrDefault(x => x.Title == ((ListBoxItem)lb_Events.SelectedValue).Content.ToString());
             tblock_Title.Text = evento.Title;
-            var usersParticipations = events.FindAll(x => x.EventId.Equals(evento.Id));
+            var usersParticipations = listAttendances.FindAll(x => x.EventId.Equals(evento.Id));
             localSettings.Values["Users_Participating"] = usersParticipations.Count.ToString();
             localSettings.Values["start_latitude"] = evento.StartLatitude;
             localSettings.Values["start_longitude"] = evento.StartLongitude;

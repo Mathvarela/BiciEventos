@@ -82,6 +82,7 @@ namespace Teste_PAD.Pages
             var evento = listEvents.FirstOrDefault(x => x.Id == eventId);
             var usersParticipations = attendances.FindAll(x => x.EventId.Equals(eventId));
             localSettings.Values["Users_Participating"] = usersParticipations.Count.ToString();
+            localSettings.Values["EventId"] = evento.Id;
             if (evento.UserId == int.Parse(localSettings.Values["sessionUser"].ToString()))
             {
                 localSettings.Values["Allowed_to_Edit"] = true;
