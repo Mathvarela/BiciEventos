@@ -127,6 +127,12 @@
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Teste_PAD.Pages.Invites" />
+    <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
+      <RootProperty Name="Stretch" />
+      <RootProperty Name="ImageSource" />
+      <RootProperty Name="AlignmentX" />
+      <RootProperty Name="AlignmentY" />
+    </RootType>
     <RootType FullName="Teste_PAD.Pages.MainPage" />
     <RootType FullName="Teste_PAD.Pages.Main" />
     <RootType FullName="Teste_PAD.Pages.MyEvents" />
