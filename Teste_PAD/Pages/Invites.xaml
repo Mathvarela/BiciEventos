@@ -12,12 +12,12 @@
             <SplitView.Pane>
                 <StackPanel Background="Gray">
                     <Button Name="b_Hamburger" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="48" Height="48" Background="Transparent" Click="b_Hamburger_Click" HorizontalAlignment="Right" Margin="0,0,152,0"/>
-                    <ListView>
-                        <ListViewItem Name="LviMain" Content="Main" Padding="50 0 0 0" Tapped="Lvi_Main_OnTapped"></ListViewItem>
-                        <ListViewItem Name="lvi_myEvents" Content="My Events" Padding="50 0 0 0" Tapped="lvi_myEvents_Tapped"></ListViewItem>
-                        <ListViewItem Name="lvi_invites" Content="Invites" Padding="50 0 0 0" Tapped="lvi_invite_Tapped"></ListViewItem>
-                        <ListViewItem Name="lvi_Create" Content="Create Event" Padding="50 0 0 0" Tapped="lvi_Create_Tapped"></ListViewItem>
-                        <ListViewItem Name="lvi_Logout" Content="Logout" Padding="50 0 0 0" Tapped="lvi_Logout_Tapped"></ListViewItem>
+                    <ListView Margin="52 0 0 0">
+                        <ListViewItem Name="LviMain" Content="Main" Padding="20 0 0 0" Tapped="Lvi_Main_OnTapped" BorderThickness="0 1 0 0" BorderBrush="AliceBlue"></ListViewItem>
+                        <ListViewItem Name="lvi_myEvents" Content="My Events" Padding="20 0 0 0" Tapped="lvi_myEvents_Tapped" BorderThickness="0 1 0 0" BorderBrush="AliceBlue"></ListViewItem>
+                        <ListViewItem Name="lvi_invites" Content="Invites" Padding="20 0 0 0" Tapped="lvi_invite_Tapped" BorderThickness="0 1 0 0" BorderBrush="AliceBlue" Background="Goldenrod"></ListViewItem>
+                        <ListViewItem Name="lvi_Create" Content="Create Event" Padding="20 0 0 0" Tapped="lvi_Create_Tapped" BorderThickness="0 1 0 0" BorderBrush="AliceBlue"></ListViewItem>
+                        <ListViewItem Name="lvi_Logout" Content="Logout" Padding="20 0 0 0" Tapped="lvi_Logout_Tapped" BorderThickness="0 1 0 0" BorderBrush="AliceBlue"></ListViewItem>
                     </ListView>
                 </StackPanel>
             </SplitView.Pane>
